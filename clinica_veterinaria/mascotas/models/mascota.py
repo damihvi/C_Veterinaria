@@ -2,22 +2,20 @@ from django.db import models
 
 class mascota(models.Model):
     id = models.AutoField(primary_key=True)
-    nombre = models.CharField(max_length=120)
-    especie = models.CharField(max_length=120)
-    raza = models.CharField(max_length=120)
-    color = models.CharField(max_length=120)
-    fecha_nacimiento = models.DateTimeField()
-    peso_kg = models.DecimalField(max_digits=10, decimal_places=2)
-    nombre_duenio = models.CharField(max_length=120)
-    telefono_duenio = models.CharField(max_length=15)
-    email_duenio = models.CharField(max_length=120)
-    is_active = models.BooleanField(default=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    isbn = models.CharField(max_length=120)
+    titulo = models.CharField(max_length=120)
+    autor = models.CharField(max_length=120)
+    editorial = models.CharField(max_length=120)
+    anio_publicacion = models.DateTimeField()
+    categoria = models.CharField(max_length=20,default="sin_categoria")
+    num_paginas = models.PositiveIntegerField(default=0)
+    ubicacion = models.CharField(max_length=15)
+    estado = models.CharField(max_length=120)
+    copias_disponibles = models.CharField(max_length=120)
 
     class Meta:
-        ordering = ("nombre",)
+        ordering = ("isbn","titulo","autor","editorial","anio_publicacion","categoria","num_paginas","ubicacion","estado","copias_disponibles")
 
     def __str__(self):
-        return self.nombre
+        return self.isbn
     

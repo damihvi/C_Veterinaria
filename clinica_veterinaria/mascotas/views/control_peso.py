@@ -13,21 +13,22 @@ class ControlPesoView(APIView):
         if not serializer.is_valid():
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
-        peso_actual = serializer.validated_data['pesoActual']
-        peso_ideal = serializer.validated_data['pesoIdeal']
+        dias_retraso = serializer.validated_data['dias_retraso']
+        multa_dia = serializer.validated_data['multa_dia']
         
         # Calcular la diferencia
-        diferencia = peso_actual - peso_ideal
+        multa = dias_retraso * multa_dia
         
         # Determinar el mensaje según la diferencia
-        if diferencia > 0:
-            mensaje = "La mascota está por encima del peso ideal"
-        elif diferencia < 0:
-            mensaje = "La mascota está por debajo del peso ideal"
+        if multa <= 5:
+            mensaje = "Retraso leve"
+        elif 5 <= multa <= 15 :
+            mensaje = "Retraso moderado"
         else:
-            mensaje = "Peso ideal alcanzado"
+            mensaje = "Retraso grave, revisar con administración"
         
         return Response({
-            "diferencia": diferencia,
+            "dias_retraso":dias_retraso,
+            "multa": multa,
             "mensaje": mensaje
         }, status=status.HTTP_200_OK)

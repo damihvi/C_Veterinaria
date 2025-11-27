@@ -1,1 +1,1 @@
-from .dosis import DosisTotalSerializer  # noqa: F401
+from .dosis import PrestamoTotalSerializer  # noqa: F401

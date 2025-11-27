@@ -1,1 +1,1 @@
-from .dosis import DosisTotalView  # noqa: F401
+from .dosis import prestamoTotalView  # noqa: F401

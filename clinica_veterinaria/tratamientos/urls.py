@@ -1,6 +1,6 @@
 from django.urls import path
-from tratamientos.views import DosisTotalView
+from tratamientos.views import prestamoTotalView
 
 urlpatterns = [
-    path('dosis-total', DosisTotalView.as_view(), name='dosis-total'),
+    path('prestamo_total', prestamoTotalView.as_view(), name='prestamo_total'),
 ]
